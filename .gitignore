@@ -1,0 +1,28 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.venv/
+venv/
+
+# Node
+node_modules/
+dist/
+
+# 本地数据库与环境
+*.db
+*.sqlite3
+.env
+
+# IDE / 系统
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+
+# 运行产物
+logs/
+*.log
+.playwright-mcp/
+.zcode/

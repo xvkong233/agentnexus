@@ -1,0 +1,146 @@
+/* ============================================================
+   AgentNexus 全局细节 —— 现代化 SaaS 观感与交互反馈
+   颜色仅引用 antd 设计体系色板，不自造色值
+   ============================================================ */
+
+/* ---------- 基础 ---------- */
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+}
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    'Helvetica Neue', Arial, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  background: #f5f7fa;
+}
+
+/* 文本选中色跟随品牌 */
+::selection {
+  background: rgba(22, 119, 255, 0.18);
+}
+
+/* ---------- 滚动条（细致扁平） ---------- */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.18);
+  border-radius: 8px;
+  transition: background 0.2s;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.3);
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* ---------- 焦点可见性（键盘导航 a11y） ---------- */
+:focus-visible {
+  outline: 2px solid #1677ff;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* ---------- 页面进场动画 ---------- */
+@keyframes page-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.ant-layout-content > div {
+  animation: page-in 0.24s cubic-bezier(0.34, 0.69, 0.63, 0.9) both;
+}
+
+/* ---------- KPI 卡片悬浮反馈 ---------- */
+.kpi-card {
+  transition:
+    transform 0.2s cubic-bezier(0.34, 0.69, 0.63, 0.9),
+    box-shadow 0.2s cubic-bezier(0.34, 0.69, 0.63, 0.9);
+  cursor: default;
+}
+.kpi-card:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 6px 16px 0 rgba(16, 24, 40, 0.08),
+    0 3px 6px -4px rgba(16, 24, 40, 0.12);
+}
+.kpi-card:active {
+  transform: translateY(0);
+}
+
+/* ---------- 可点击卡片（带整卡跳转语义的容器） ---------- */
+.clickable-card {
+  cursor: pointer;
+  transition:
+    transform 0.2s cubic-bezier(0.34, 0.69, 0.63, 0.9),
+    box-shadow 0.2s cubic-bezier(0.34, 0.69, 0.63, 0.9),
+    border-color 0.2s;
+}
+.clickable-card:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 6px 16px 0 rgba(16, 24, 40, 0.08),
+    0 3px 6px -4px rgba(16, 24, 40, 0.12);
+  border-color: #91caff;
+}
+.clickable-card:active {
+  transform: translateY(0) scale(0.995);
+}
+
+/* ---------- 表格行点击反馈 ---------- */
+.ant-table-row.row-clickable {
+  cursor: pointer;
+}
+
+/* ---------- 侧边栏菜单选中态加粗指示条 ---------- */
+.ant-menu-dark .ant-menu-item-selected::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 25%;
+  height: 50%;
+  width: 3px;
+  border-radius: 0 3px 3px 0;
+  background: #fff;
+}
+
+/* ---------- 聊天页消息区滚动 ---------- */
+.chat-scroll::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.12);
+}
+
+/* ---------- XCard A2UI 卡片进场 ---------- */
+@keyframes card-in {
+  from {
+    opacity: 0;
+    transform: scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+[class*='a2ui-surface'],
+[data-surface-id] {
+  animation: card-in 0.24s ease-out both;
+}
+
+/* ---------- 减少动效偏好 ---------- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
